@@ -1,15 +1,29 @@
 import streamlit as st
 
-from apps.email_intelligence import run_email_intelligence
-from apps.document_intelligence import run_document_intelligence
-from apps.risk_intelligence import run_risk_intelligence
-from apps.knowledge_assistant import run_knowledge_assistant
+from apps.email.ui import run_email_intelligence
+
+# Placeholder modules (replace with real implementations later)
+def run_document_intelligence():
+    st.title("📄 Document Intelligence")
+    st.info("Coming soon...")
+
+def run_risk_intelligence():
+    st.title("⚠️ Risk Intelligence")
+    st.info("Coming soon...")
+
+def run_knowledge_assistant():
+    st.title("🧠 Knowledge Assistant")
+    st.info("Coming soon...")
 
 st.set_page_config(
     page_title="Enterprise AI Operations Platform",
     page_icon="🤖",
     layout="wide"
 )
+
+# ==========================
+# Sidebar
+# ==========================
 
 st.sidebar.title("🤖 EAOP")
 st.sidebar.caption("Enterprise AI Operations Platform")
@@ -26,11 +40,13 @@ page = st.sidebar.radio(
         "Document Intelligence",
         "Risk Intelligence",
         "Knowledge Assistant",
-        "Evaluation",
-        "Monitoring",
         "About"
     ]
 )
+
+# ==========================
+# Dashboard
+# ==========================
 
 def module_card(title, description, status):
     with st.container(border=True):
@@ -39,14 +55,22 @@ def module_card(title, description, status):
         st.caption(f"Status: {status}")
 
 if page == "Dashboard":
+
     st.title("Enterprise AI Operations Platform")
+
     st.markdown(
-        "### Building reusable enterprise AI capabilities instead of standalone AI applications."
+        """
+        ### Building reusable enterprise AI capabilities for business operations.
+        """
     )
 
     st.write(
-        "EAOP is a modular AWS-powered platform designed to support enterprise operations "
-        "through AI capabilities for email, documents, risk, and knowledge workflows."
+        """
+        Enterprise AI Operations Platform (EAOP) is a modular AI platform
+        designed to provide reusable enterprise AI capabilities across
+        Email Intelligence, Document Intelligence, Risk Intelligence,
+        and Knowledge Assistance.
+        """
     )
 
     st.divider()
@@ -54,42 +78,46 @@ if page == "Dashboard":
     col1, col2, col3 = st.columns(3)
 
     with col1:
-        st.metric("AI Modules", "4")
+        st.metric("AI Capabilities", "4")
+
     with col2:
-        st.metric("Platform Version", "1.0 MVP")
+        st.metric("Cloud", "AWS")
+
     with col3:
-        st.metric("Cloud Focus", "AWS")
+        st.metric("Platform", "MVP")
 
     st.divider()
 
-    st.header("Enterprise AI Applications")
+    st.header("Enterprise AI Capabilities")
 
-    col1, col2 = st.columns(2)
+    left, right = st.columns(2)
 
-    with col1:
+    with left:
+
         module_card(
             "📧 Email Intelligence",
-            "Summarize, classify, prioritize, and draft responses for enterprise emails.",
+            "Summarize, classify and analyze enterprise emails.",
             "Available"
         )
 
         module_card(
             "⚠️ Risk Intelligence",
-            "Classify risk events, generate investigation summaries, and support operational risk review.",
-            "Available"
+            "Risk analysis and investigation support.",
+            "Coming Soon"
         )
 
-    with col2:
+    with right:
+
         module_card(
             "📄 Document Intelligence",
-            "Upload documents, retrieve relevant context, and answer questions using RAG.",
-            "Available"
+            "Document Q&A using Retrieval Augmented Generation (RAG).",
+            "Coming Soon"
         )
 
         module_card(
             "🧠 Knowledge Assistant",
-            "Search enterprise knowledge and support policy or process Q&A.",
-            "Planned"
+            "Enterprise knowledge search and AI assistance.",
+            "Coming Soon"
         )
 
     st.divider()
@@ -99,19 +127,31 @@ if page == "Dashboard":
     st.code(
         """
 Users
-  ↓
+    │
+    ▼
 Enterprise AI Operations Platform
-  ↓
-AI Application Modules
-  ↓
-Shared AI Services
-  ↓
-Amazon Bedrock / AWS Services
-  ↓
-Enterprise Data Sources
+    │
+    ▼
+Business Capabilities
+    │
+    ▼
+AI Engine
+    │
+    ▼
+Prompt Manager
+    │
+    ▼
+Model Provider
+    │
+    ▼
+Amazon Bedrock (Future)
         """,
         language="text"
     )
+
+# ==========================
+# Pages
+# ==========================
 
 elif page == "Email Intelligence":
     run_email_intelligence()
@@ -125,53 +165,37 @@ elif page == "Risk Intelligence":
 elif page == "Knowledge Assistant":
     run_knowledge_assistant()
 
-elif page == "Evaluation":
-    st.title("Evaluation")
-    st.info("Evaluation dashboard will track AI output quality, user feedback, and response consistency.")
-
-elif page == "Monitoring":
-    st.title("Monitoring")
-    st.info("Monitoring will include usage metrics, logs, cost tracking, and platform health.")
-
 elif page == "About":
+
     st.title("About Enterprise AI Operations Platform")
 
-    st.header("Vision")
-    st.write(
-        "EAOP is designed as a modular enterprise AI platform that enables reusable AI capabilities "
-        "across operational workflows."
-    )
-
-    st.header("Design Principles")
     st.markdown(
         """
-        - **Enterprise-first:** Every module solves a business problem.
-        - **Reusable:** Shared AI services support multiple applications.
-        - **Modular:** New AI assistants can be added independently.
-        - **Cloud-native:** AWS services are used where appropriate.
-        - **Explainable:** AI outputs should be transparent and reviewable.
-        """
-    )
+### Vision
 
-    st.header("Technology Stack")
-    st.markdown(
-        """
-        - Python
-        - Streamlit
-        - Amazon Bedrock
-        - AWS S3
-        - OpenSearch / FAISS
-        - LangChain
-        - Boto3
-        """
-    )
+Design a modular enterprise AI platform that delivers reusable AI capabilities
+for business operations.
 
-    st.header("Roadmap")
-    st.markdown(
-        """
-        - **Version 1.0:** Platform shell and module integration
-        - **Version 1.5:** Shared Bedrock service, prompt library, and logging
-        - **Version 2.0:** Evaluation, monitoring, and feedback
-        - **Version 3.0:** AI agents, workflow orchestration, and enterprise governance
-        """
+### Core Design Principles
+
+- Enterprise-first
+- Modular architecture
+- Reusable AI Engine
+- Cloud-native (AWS)
+- Extensible platform
+
+### Technology Stack
+
+- Python
+- Streamlit
+- Amazon Bedrock (planned)
+- LangChain
+- OpenSearch / FAISS
+- Amazon S3
+- Boto3
+
+### Current Sprint
+
+Sprint 2 - Shared AI Engine Foundation
+"""
     )
