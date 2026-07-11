@@ -11,6 +11,12 @@
 
 ### Sprint 2 – Shared AI Platform Foundation
 
+* AI Engine
+* Prompt Manager
+* Model Provider
+* Email Service
+* Clean separation of responsibilities
+
 * Introduced the shared **AI Engine** architecture
 * Added **Prompt Manager** for reusable prompt generation
 * Added **Model Provider** abstraction (Mock Provider for initial development)
