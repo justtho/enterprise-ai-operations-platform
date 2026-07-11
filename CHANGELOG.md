@@ -16,7 +16,7 @@
 * Model Provider
 * Email Service
 * Clean separation of responsibilities
-
+## Following steps in Sprint2
 * Introduced the shared **AI Engine** architecture
 * Added **Prompt Manager** for reusable prompt generation
 * Added **Model Provider** abstraction (Mock Provider for initial development)
